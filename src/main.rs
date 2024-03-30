@@ -17,5 +17,6 @@ fn main() {
     let args = Args::parse();
 
     let data = fs::read(args.ttf_file).unwrap();
-    ttf_parser(&data).unwrap();
+    let (data, font) = ttf_parser(&data).unwrap();
+    println!("{:#?}", font.tables);
 }
