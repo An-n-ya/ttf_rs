@@ -19,4 +19,5 @@ fn main() {
     let data = fs::read(args.ttf_file).unwrap();
     let (data, font) = ttf_parser(&data).unwrap();
     println!("{:#?}", font.tables);
+    font.read_cmap();
 }

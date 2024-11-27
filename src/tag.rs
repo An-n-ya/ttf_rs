@@ -3,7 +3,7 @@
 #[macro_export]
 macro_rules! build_tag {
     ($(($s:expr, $tag:ident)),*) => {
-        #[derive(Debug)]
+        #[derive(Debug,PartialEq)]
         pub enum Tag {
             $($tag,)*
         }
@@ -20,31 +20,31 @@ macro_rules! build_tag {
 }
 
 build_tag!(
-    ("glyf", glyf),
-    ("loca", loca),
-    ("fpgm", fpgm),
-    ("prep", prep),
-    ("cvt ", cvt),
-    ("gasp", gasp),
-    ("head", head),
-    ("hhea", hhea),
-    ("hmtx", hmtx),
-    ("maxp", maxp),
-    ("morx", morx),
-    ("name", name),
-    ("post", post),
-    ("prop", prop),
-    ("vhea", vhea),
-    ("vmtx", vmtx),
+    ("BASE", BASE),
+    ("CBDT", CBDT),
+    ("CBLC", CBLC),
     ("FFTM", FFTM),
     ("GDEF", GDEF),
     ("GPOS", GPOS),
     ("GSUB", GSUB),
     ("OS/2", OS2),
-    ("cmap", cmap),
-    ("feat", feat),
     ("avar", avar),
-    ("BASE", BASE),
-    ("CBDT", CBDT),
-    ("CBLC", CBLC)
+    ("cmap", cmap),
+    ("cvt ", cvt),
+    ("feat", feat),
+    ("fpgm", fpgm),
+    ("gasp", gasp),
+    ("glyf", glyf),
+    ("head", head),
+    ("hhea", hhea),
+    ("hmtx", hmtx),
+    ("loca", loca),
+    ("maxp", maxp),
+    ("morx", morx),
+    ("name", name),
+    ("post", post),
+    ("prep", prep),
+    ("prop", prop),
+    ("vhea", vhea),
+    ("vmtx", vmtx)
 );

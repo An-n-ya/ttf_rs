@@ -10,6 +10,7 @@ use nom::{
 use crate::tag::Tag;
 
 mod primitive_type;
+mod tables;
 
 #[derive(Debug)]
 pub struct RawFontData<'a> {
@@ -23,6 +24,15 @@ pub struct TableRecord {
     checksum: u32,
     offset: u32,
     length: u32,
+}
+
+impl<'a> RawFontData<'a> {
+    pub fn find_table_record(&self, tag: Tag) -> &TableRecord {
+        self.tables
+            .iter()
+            .find(|x| x.tag == tag)
+            .expect(&format!("cannot find table record {:?}", tag))
+    }
 }
 
 pub fn ttf_parser(input: &[u8]) -> IResult<&[u8], RawFontData> {
